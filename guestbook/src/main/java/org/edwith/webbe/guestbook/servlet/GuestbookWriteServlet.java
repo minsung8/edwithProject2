@@ -18,32 +18,33 @@ public class GuestbookWriteServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head><title>form</title></head>");
 		out.println("<body>");
-		out.println("<form method='post' action='/guestbook/guestbooks/write'>");
+		out.println("<form method='get' action='/guestbook/guestbooks'>");
 		out.println("name : <input type='text' name='name'><br>");
 		out.println("content : <input type='comment' name='content'><br>");
 		out.println("<input type='submit' value='ok'><br>");                                                 
 		out.println("</form>");
 		out.println("</body>");
 		out.println("</html>");
-		out.close();
+    	out.close();
+
 	}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	response.setContentType("text/html");
-    	PrintWriter out = response.getWriter();
-    	
+		PrintWriter out = response.getWriter();
+
     	String name = request.getParameter("name");
     	String content = request.getParameter("content");
     	Guestbook dto = new Guestbook(name, content);
     	GuestbookDao dao = new GuestbookDao();
     	dao.addGuestbook(dto);
-    	
-    	out.println(name + " " + content);
     	out.close();
+
+
     }
     
 }

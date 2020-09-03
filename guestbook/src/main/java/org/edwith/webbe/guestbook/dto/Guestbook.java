@@ -1,14 +1,16 @@
 package org.edwith.webbe.guestbook.dto;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Guestbook {
     private Long id;
     private String name;
     private String content;
-    private Date regdate;
+    private Timestamp regdate;
         
-    public Guestbook(Long id, String name, String content, Date regdate) {
+    public Guestbook(Long id, String name, String content, Timestamp regdate) {
         this.id = id;
         this.name = name;
         this.content = content;
@@ -18,7 +20,6 @@ public class Guestbook {
     public Guestbook(String name, String content) {
         this.name = name;
         this.content = content;
-        this.regdate = new Date();
     }
 
     public Long getId() {
@@ -49,7 +50,7 @@ public class Guestbook {
         return regdate;
     }
 
-    public void setRegdate(Date regdate) {
+    public void setRegdate(Timestamp regdate) {
         this.regdate = regdate;
     }
 
